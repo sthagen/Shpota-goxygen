@@ -17,7 +17,7 @@
         <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/releases">
-        <img src="https://img.shields.io/badge/version-v0.1.0-green">
+        <img src="https://img.shields.io/badge/version-v0.2.0-green">
     </a>
     <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
@@ -29,12 +29,12 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Generate a Full Stack Web project with Go, React, and MongoDB in seconds.**
+**Generate a Web project with Go, Angular/React/Vue, and MongoDB in seconds.**
 
 Goxygen aims at saving your time while setting up a new project. It
 creates a skeleton of an application with all configuration done for
 you. You can start implementing your business logic straight away.
-Goxygen generates back end Go code, connects it with front end React
+Goxygen generates back end Go code, connects it with front end
 components, provides a Dockerfile for the application and creates
 docker-compose files for convenient run in development and production
 environments.
@@ -46,6 +46,14 @@ go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
 This generates a project in `my-app` folder. 
+
+By default, a React-based project is generated. You can choose  
+from Angular, React and Vue by passing `angular`, `react` and 
+`vue` to the `--frontend` flag. For example:
+
+```go
+go run github.com/shpota/goxygen init --frontend vue my-app
+```
 
 The generated project is ready to run with `docker-compose`:
 ```sh
@@ -60,7 +68,7 @@ project in its readme file.
 
 ![Showcase](showcase.gif)
 
-## Structure of a generated project
+## Structure of a generated project (React-based app)
 
     my-app
     ├── server                   # Go project files
@@ -94,20 +102,20 @@ for simplicity.
 
 Goxygen generates a basic structure of a project and doesn't force you
 to use a specific set of tools. That's why it doesn't bring unneeded
-dependencies to your project. The only two dependencies are
+dependencies to your project. It uses only 
 [mongo-go-driver](https://github.com/mongodb/mongo-go-driver) on the
-back end side and [axios](https://github.com/axios/axios) on the front
-end side.
+back end side and [axios](https://github.com/axios/axios) in React
+and Vue projects. Angular projects use only Angular specific libraries.
 
 ## How to contribute
 
 If you found a bug or have an idea on how to improve the project
 [open an issue](https://github.com/Shpota/goxygen/issues)
-and we will fix it as soon as possible.
-
-You can also propose your changes via a Pull Request. Fork the
-repository, make changes, send us a pull request and we'll
-review it shortly.
+and we will fix it as soon as possible. You can also propose your
+changes via a Pull Request. Fork the repository, make changes, send
+us a pull request and we'll review it shortly. We also have a
+[Gitter chat](https://gitter.im/goxygen/community) where we discuss
+all the changes.
 
 ### Credits
 Goxygen's logo was created by [Egon Elbre](https://twitter.com/egonelbre).

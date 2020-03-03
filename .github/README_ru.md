@@ -17,7 +17,7 @@
         <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/releases">
-        <img src="https://img.shields.io/badge/version-v0.1.0-green">
+        <img src="https://img.shields.io/badge/version-v0.2.0-green">
     </a>
     <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
@@ -29,7 +29,7 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Goxygen генерирует Full Stack Web проекты на Go, React и MongoDB.**
+**Goxygen генерирует Web проекты на Go, Angular/React/Vue и MongoDB.**
 
 Goxygen сохранит ваше время при создании новых приложений. Он
 генерирует базовую структуру Web проекта и позволяет сразу же перейти
@@ -46,7 +46,15 @@ go run github.com/shpota/goxygen init my-app
 ```
 В результате будет сгенерирован проект в директории `my-app`.
 
-Проект готов к запуску через `docker-compose`:
+React используется по умолчанию. Вы можете выбрать Angular, React
+или Vue, передав `angular`, `react` или `vue` как значение для 
+флага`--frontend`. Например:
+
+```go
+go run github.com/shpota/goxygen init --frontend vue my-app
+```
+
+Сгенерированный проект готов к запуску через `docker-compose`:
 ```sh
 cd my-app
 docker-compose up
@@ -59,7 +67,7 @@ http://localhost:8080.
 
 ![Showcase](showcase.gif)
 
-## Структура сгенерированного проекта
+## Структура сгенерированного проекта (на примере React)
 
     my-app
     ├── server                   # серверная часть приложения (Go)
@@ -93,9 +101,9 @@ http://localhost:8080.
 
 Goxygen генерирует только базовою структуру проекта и не навязывает
 вам использование специфических библиотек или утилит. Сгенерированный
-проект имеет только две необходимые зависимости: драйвер для базы
+проект имеет только две сторонние зависимости: драйвер для базы
 данных и библиотеку для асинхронных REST запросов,
-[axios](https://github.com/axios/axios), на стороне клиента.
+[axios](https://github.com/axios/axios), в React и Vue проектах.
 
 ## Как поучаствовать в разработке Goxygen
 
