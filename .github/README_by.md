@@ -38,7 +38,7 @@
         <img src="https://github.com/Shpota/goxygen/workflows/build/badge.svg">
     </a>
     <a href="https://github.com/Shpota/goxygen/releases">
-        <img src="https://img.shields.io/badge/version-v0.2.2-green">
+        <img src="https://img.shields.io/badge/version-v0.3.0-green">
     </a>
     <a href="https://gitter.im/goxygen/community">
         <img src="https://badges.gitter.im/goxygen/community.svg">
@@ -50,7 +50,7 @@
 
 <img src="../templates/react.webapp/src/logo.svg" align="right" width="230px" alt="goxygen logo">
 
-**Goxygen генеруе Web праекты на Go, Angular/React/Vue і MongoDB.**
+**Goxygen генеруе Web праекты на Go і сучасных SPA фреймворках.**
 
 Goxygen захавае ваш час пры стварэнні новых дадаткаў. Ён генеруе 
 базавую структуру Web праекта і дазваляе адразу ж перайсці да 
@@ -58,6 +58,32 @@ Goxygen захавае ваш час пры стварэнні новых дад
 стварае back end код на Go, звязвае яго з front end кампанентамі,
 дадае `Dockerfile` і `docker-compose` для зручнага запуску
 лакальна і ў production асяроддзі.
+
+<table>
+    <thead>
+    <tr align="center">
+        <td colspan=4><b>Падтрымліваюцца тэхналогіі</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center">
+        <td align="center">Front End</td>
+        <td>Angular</td>
+        <td>React</td>
+        <td>Vue</td>
+    </tr>
+    <tr align="center">
+        <td>Back End</td>
+        <td colspan=3>Go</td>
+    </tr>
+    <tr align="center">
+        <td>База даных</td>
+        <td>MongoDB</td>
+        <td>MySQL</td>
+        <td>PostgreSQL</td>
+    </tr>
+    </tbody>
+</table>
 
 ## Выкарыстанне
 
@@ -68,13 +94,17 @@ go run github.com/shpota/goxygen init my-app
 ```
 У выніку будзе згенераваны праект у дырэкторыі `my-app`.
 
-React выкарыстоўваецца па змаўчанню. Вы можаце выбраць Angular, React
-або Vue, перадаў `angular`, `react` або `vue` як значэнне для
-сцягу `--frontend`. Напрыклад:
+React і MongoDB  выкарыстоўваецца па змаўчанню. Вы 
+можаце выбраць розныя front end фреймворк і розныя 
+базу даных з дапамогай `--frontend` і `--db` сцягі. 
+Напрыклад, гэтая каманда створыць праект з Vue і PostgreSQL:
 
 ```go
-go run github.com/shpota/goxygen init --frontend vue my-app
+go run github.com/shpota/goxygen init --frontend vue --db postgres my-app
 ```
+
+Сцяг `--frontend` прымае `angular`, `react` або ` vue`.
+Сцяг `--db` прымае `mongo`, `mysql` або `postgres`.
 
 Сфарміраваны праект гатовы да запуску з `docker-compose`: 
 ```sh
@@ -89,7 +119,7 @@ http://localhost:8080.
 
 ![Showcase](showcase.gif)
 
-## Структура генераванага праекта (прыкладанне на аснове React)
+## Структура генераванага праекта (прыкладанне на аснове React/MongoDB)
 
     my-app
     ├── server                   # серверная частка дадатку (Go)
