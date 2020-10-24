@@ -24,6 +24,18 @@ webapp/node_modules
 webapp/build
 webapp/npm-debug.log*
 `,
+		"angular.webapp/.browserslistrc": `# This file is used by the build system to adjust CSS and JS output to support the specified browsers below.
+# For additional information regarding the format and rule options, please see:
+# https://github.com/browserslist/browserslist#queries
+
+# You can see what browsers were selected by your queries by running:
+#   npx browserslist
+
+> 0.5%
+last 2 versions
+Firefox ESR
+not dead
+not IE 9-11 # For IE 9-11 support, remove 'not'.`,
 		"angular.webapp/.editorconfig": `# Editor configuration, see https://editorconfig.org
 root = true
 
@@ -216,18 +228,6 @@ Thumbs.db
   "defaultProject": "project-name"
 }
 `,
-		"angular.webapp/browserslist": `# This file is used by the build system to adjust CSS and JS output to support the specified browsers below.
-# For additional information regarding the format and rule options, please see:
-# https://github.com/browserslist/browserslist#queries
-
-# You can see what browsers were selected by your queries by running:
-#   npx browserslist
-
-> 0.5%
-last 2 versions
-Firefox ESR
-not dead
-not IE 9-11 # For IE 9-11 support, remove 'not'.`,
 		"angular.webapp/e2e/protractor.conf.js": `// @ts-check
 // Protractor configuration file, see link for more information
 // https://github.com/angular/protractor/blob/master/lib/config.ts
@@ -301,7 +301,7 @@ export class AppPage {
   "compilerOptions": {
     "outDir": "../out-tsc/e2e",
     "module": "commonjs",
-    "target": "es5",
+    "target": "es2018",
     "types": [
       "jasmine",
       "jasminewd2",
@@ -356,37 +356,37 @@ module.exports = function (config) {
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~9.1.7",
-    "@angular/common": "~9.1.7",
-    "@angular/compiler": "~9.1.7",
-    "@angular/core": "~9.1.7",
-    "@angular/forms": "~9.1.7",
-    "@angular/platform-browser": "~9.1.7",
-    "@angular/platform-browser-dynamic": "~9.1.7",
-    "@angular/router": "~9.1.7",
+    "@angular/animations": "~10.1.4",
+    "@angular/common": "~10.1.4",
+    "@angular/compiler": "~10.1.4",
+    "@angular/core": "~10.1.4",
+    "@angular/forms": "~10.1.4",
+    "@angular/platform-browser": "~10.1.4",
+    "@angular/platform-browser-dynamic": "~10.1.4",
+    "@angular/router": "~10.1.4",
     "rxjs": "~6.5.4",
-    "tslib": "~1.10.0",
+    "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.901.6",
-    "@angular/cli": "~9.1.6",
-    "@angular/compiler-cli": "~9.1.7",
+    "@angular-devkit/build-angular": "~0.1001.4",
+    "@angular/cli": "~10.1.4",
+    "@angular/compiler-cli": "~10.1.4",
     "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
-    "jasmine-spec-reporter": "~4.2.1",
+    "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
     "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~2.1.0",
-    "karma-jasmine": "~3.0.1",
-    "karma-jasmine-html-reporter": "~1.4.2",
-    "protractor": "~5.4.3",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~4.0.3"
   }
 }
 `,
@@ -1071,7 +1071,7 @@ context.keys().map(context);
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "module": "esnext",
+    "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
@@ -1111,13 +1111,21 @@ context.keys().map(context);
 		"angular.webapp/tslint.json": `{
   "extends": "tslint:recommended",
   "rules": {
+    "align": {
+      "options": [
+        "parameters",
+        "statements"
+      ]
+    },
     "array-type": false,
     "arrow-parens": false,
+    "arrow-return-shorthand": true,
     "deprecation": {
       "severity": "warning"
     },
     "component-class-suffix": true,
     "contextual-lifecycle": true,
+    "curly": true,
     "directive-class-suffix": true,
     "directive-selector": [
       true,
@@ -1131,10 +1139,17 @@ context.keys().map(context);
       "app",
       "kebab-case"
     ],
+    "eofline": true,
     "import-blacklist": [
       true,
       "rxjs/Rx"
     ],
+    "import-spacing": true,
+    "indent": {
+      "options": [
+        "spaces"
+      ]
+    },
     "interface-name": false,
     "max-classes-per-file": false,
     "max-line-length": [
@@ -1189,28 +1204,77 @@ context.keys().map(context);
     "no-output-native": true,
     "no-output-on-prefix": true,
     "no-output-rename": true,
+    "semicolon": {
+      "options": [
+        "always"
+      ]
+    },
+    "space-before-function-paren": {
+      "options": {
+        "anonymous": "never",
+        "asyncArrow": "always",
+        "constructor": "never",
+        "method": "never",
+        "named": "never"
+      }
+    },
     "no-outputs-metadata-property": true,
     "template-banana-in-box": true,
     "template-no-negated-async": true,
+    "typedef-whitespace": {
+      "options": [
+        {
+          "call-signature": "nospace",
+          "index-signature": "nospace",
+          "parameter": "nospace",
+          "property-declaration": "nospace",
+          "variable-declaration": "nospace"
+        },
+        {
+          "call-signature": "onespace",
+          "index-signature": "onespace",
+          "parameter": "onespace",
+          "property-declaration": "onespace",
+          "variable-declaration": "onespace"
+        }
+      ]
+    },
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        "check-format",
+        "allow-pascal-case"
+      ]
+    },
+    "whitespace": {
+      "options": [
+        "check-branch",
+        "check-decl",
+        "check-operator",
+        "check-separator",
+        "check-type",
+        "check-typecast"
+      ]
+    }
   },
   "rulesDirectory": [
     "codelyzer"
   ]
 }`,
-		"mongo.Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
+		"mongo.Dockerfile": `FROM node:12.18.3-alpine3.12 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.13.9-alpine AS GO_BUILD
+FROM golang:1.15.1-alpine3.12 AS GO_BUILD
 RUN apk update && apk add build-base
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.11.3
+FROM alpine:3.12.0
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1363,7 +1427,7 @@ func (m MongoDB) GetTechnologies() ([]*model.Technology, error) {
 
 go 1.13
 
-require go.mongodb.org/mongo-driver v1.3.3
+require go.mongodb.org/mongo-driver v1.4.1
 `,
 		"mongo.server/server.go": `package main
 
@@ -1401,17 +1465,17 @@ func clientOptions() *options.ClientOptions {
 	)
 }
 `,
-		"mysql.Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
+		"mysql.Dockerfile": `FROM node:12.18.3-alpine3.12 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.13.9-alpine AS GO_BUILD
+FROM golang:1.15.1-alpine3.12 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.11.3
+FROM alpine:3.12.0
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1602,17 +1666,17 @@ func dataSource() string {
 	return "goxygen:" + pass + "@tcp(" + host + ":3306)/goxygen"
 }
 `,
-		"postgres.Dockerfile": `FROM node:12.16.1-alpine3.11 AS JS_BUILD
+		"postgres.Dockerfile": `FROM node:12.18.3-alpine3.12 AS JS_BUILD
 COPY webapp /webapp
 WORKDIR webapp
 RUN npm install && npm run build
 
-FROM golang:1.13.9-alpine AS GO_BUILD
+FROM golang:1.15.1-alpine3.12 AS GO_BUILD
 COPY server /server
 WORKDIR /server
 RUN go build -o /go/bin/server
 
-FROM alpine:3.11.3
+FROM alpine:3.12.0
 COPY --from=JS_BUILD /webapp/build* ./webapp/
 COPY --from=GO_BUILD /go/bin/server ./
 CMD ./server
@@ -1764,7 +1828,8 @@ func (d PostgresDB) GetTechnologies() ([]*model.Technology, error) {
 
 go 1.13
 
-require github.com/lib/pq v1.5.2`,
+require github.com/lib/pq v1.8.0
+`,
 		"postgres.server/server.go": `package main
 
 import (
@@ -1807,10 +1872,10 @@ func dataSource() string {
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "~0.19.2",
+    "axios": "~0.20.0",
     "react": "~16.13.1",
     "react-dom": "~16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "~4.2.4",
@@ -2515,18 +2580,18 @@ VUE_APP_API_URL=`,
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "~0.19.2",
-    "core-js": "~3.6.4",
-    "vue": "~2.6.11"
+    "axios": "~0.20.0",
+    "core-js": "~3.6.5",
+    "vue": "~3.0.0-0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-plugin-eslint": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "~3.0.0-0",
     "babel-eslint": "~10.1.0",
     "eslint": "~6.7.2",
-    "eslint-plugin-vue": "~6.2.2",
-    "vue-template-compiler": "~2.6.11"
+    "eslint-plugin-vue": "~7.0.0-0"
   },
   "eslintConfig": {
     "root": true,
@@ -2534,7 +2599,7 @@ VUE_APP_API_URL=`,
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/vue3-essential",
       "eslint:recommended"
     ],
     "parserOptions": {
@@ -2544,7 +2609,8 @@ VUE_APP_API_URL=`,
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 2 versions",
+    "not dead"
   ]
 }
 `,
@@ -2569,7 +2635,7 @@ VUE_APP_API_URL=`,
   <div id="app">
     <h2 class="title">project-name</h2>
     <div class="logo">
-      <img :src="logoSVG" height="150px" alt="logo" />
+      <img :src="logoSVG" height="150" alt="logo" />
     </div>
     <div>
       This project is generated with
@@ -3004,14 +3070,10 @@ export default {
 }
 </style>
 `,
-		"vue.webapp/src/main.js": `import Vue from 'vue'
+		"vue.webapp/src/main.js": `import { createApp } from 'vue'
 import App from './App.vue'
 
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+createApp(App).mount('#app')
 `,
 	}
 }
