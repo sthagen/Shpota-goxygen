@@ -35,6 +35,9 @@
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_he.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/il.svg">
     </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_tr.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/tr.svg">
+    </a>
     <br>
     Goxygen
     <a href="https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild">
@@ -88,8 +91,17 @@ Goxygen сохранит ваше время при создании новых 
     </tbody>
 </table>
 
-## Использование
+## Системные требования
 Вам нужно иметь Go 1.11 или новее.
+
+Переменная окружения `GO111MODULE` должна быть установлена в `auto`
+для работы логики генерирования. Это значение по умолчанию для версий
+Go до 1.15. Для Go 1.16, ее нужно установить отдельно:
+```
+export GO111MODULE=auto
+```
+
+## Использование
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app

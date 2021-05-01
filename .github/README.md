@@ -35,6 +35,9 @@
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_he.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/il.svg">
     </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_tr.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/tr.svg">
+    </a>
     <br>
     Goxygen
     <a href="https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild">
@@ -89,13 +92,28 @@ environments.
     </tbody>
 </table>
 
-## How to use
+## Requirements
+
 You need to have Go 1.11 or newer on your machine.
+
+The `GO111MODULE` environment variable has to be set to `auto`
+for the generation logic to work. It is a default for Go
+versions up to 1.15. For Go 1.16, you need to set it explicitly:
+
+```
+export GO111MODULE=auto
+```
+
+## How to use
+
+Run:
+
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
 ```
-This generates a project in `my-app` folder. 
+
+This generates a project in `my-app` folder.
 
 By default, it will use React and MongoDB. You can select
 a different front end framework and a database using
@@ -110,15 +128,17 @@ The `--frontend` flag accepts `angular`, `react` and `vue`.
 The `--db` flag accepts `mongo`, `mysql` and `postgres`.
 
 The generated project is ready to run with `docker-compose`:
+
 ```sh
 cd my-app
 docker-compose up
 ```
+
 After the build is completed, the application is accessible
 on http://localhost:8080.
 
 You can find more details on how to work with the generated
-project in its README file. 
+project in its README file.
 
 ![Showcase](showcase.gif)
 
@@ -131,12 +151,12 @@ project in its README file.
     │   ├── web                  # REST APIs, web server
     │   ├── server.go            # the starting point of the server
     │   └── go.mod               # server dependencies
-    ├── webapp                    
+    ├── webapp
     │   ├── public               # icons, static files, and index.html
-    │   ├── src                       
+    │   ├── src
     │   │   ├── App.js           # the main React component
     │   │   ├── App.css          # App component-specific styles
-    │   │   ├── index.js         # the entry point of the application          
+    │   │   ├── index.js         # the entry point of the application
     │   │   └── index.css        # global styles
     │   ├── package.json         # front end dependencies
     │   ├── .env.development     # holds API endpoint for dev environment
@@ -170,5 +190,6 @@ us a pull request and we'll review it shortly. We also have a
 [Gitter chat](https://gitter.im/goxygen/community) where we discuss
 all the changes.
 
-### Credits
+## Credits
+
 Goxygen's logo was created by [Egon Elbre](https://twitter.com/egonelbre).

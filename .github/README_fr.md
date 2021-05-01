@@ -35,6 +35,9 @@
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_he.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/il.svg">
     </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_tr.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/tr.svg">
+    </a>
     <br>
     Goxygen
     <a href="https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild">
@@ -88,9 +91,17 @@ dans des environnements de développement et de production.
     </tbody>
 </table>
 
-## Guide d'utilisation
-
+## Requirements
 Vous devez disposer de la version 1.11 ou supérieure de Go sur votre machine.
+
+The `GO111MODULE` environment variable has to be set to `auto`
+for the generation logic to work. It is a default for Go
+versions up to 1.15. For Go 1.16, you need to set it explicitly:
+```
+export GO111MODULE=auto
+```
+
+## Guide d'utilisation
 
 ```go
 go get -u github.com/shpota/goxygen

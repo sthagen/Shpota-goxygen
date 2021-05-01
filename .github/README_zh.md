@@ -35,6 +35,9 @@
     <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_he.md">
         <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/il.svg">
     </a>
+    <a href="https://github.com/Shpota/goxygen/tree/master/.github/README_tr.md">
+        <img height="20px" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/flags/4x3/tr.svg">
+    </a>
     <br>
     Goxygen
     <a href="https://github.com/Shpota/goxygen/actions?query=workflow%3Abuild">
@@ -82,8 +85,17 @@ Goxygen致力于节省你搭建一个项目的时间。它自动生成一个完�
     </tbody>
 </table>
 
+## Requirements
+你需要安装Go 1.11或者更新的版本。
+
+The `GO111MODULE` environment variable has to be set to `auto`
+for the generation logic to work. It is a default for Go
+versions up to 1.15. For Go 1.16, you need to set it explicitly:
+```
+export GO111MODULE=auto
+```
+
 # 如何使用
-你需要安装Go 1.11或者更新的版本。  
 ```go
 go get -u github.com/shpota/goxygen
 go run github.com/shpota/goxygen init my-app
